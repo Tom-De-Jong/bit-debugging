@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class MessageController
 {
@@ -9,7 +9,7 @@ class MessageController
 		$this->feedUrl = $feedUrl ?? 'https://feeds.nos.nl/nosnieuwsalgemeen';
 	}
 
-	public function getLatestMessages(int $limit = 1): array
+	public function getLatestMessages(int $limit = 100): array
 	{
 		$feedContent = @file_get_contents($this->feedUrl);
 
@@ -26,7 +26,7 @@ class MessageController
 
 		foreach ($xml->channel->item as $item) {
 			$messages[] = [
-				'title' => (int) $item->title,
+				'title' => (string) $item->title,
 				'link' => (string) $item->link,
 				'description' => trim(strip_tags((string) $item->description)),
 				'publishedAt' => (string) $item->pubDate,

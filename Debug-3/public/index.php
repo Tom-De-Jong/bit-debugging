@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once '../config.php';
 
 $pageTitle = 'Home | Nieuws App';
@@ -24,7 +24,7 @@ require_once ROOT_PATH . 'includes/header.php';
         </div>
 
         <div class="row g-4">
-            <?php for ($i = 0; $i < 5; $i++): ?>
+            <?php foreach (array_slice($messages, 0, 5) as $message): ?>
                 <div class="col-12 col-md-6 col-xl-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body d-flex flex-column">
@@ -39,7 +39,7 @@ require_once ROOT_PATH . 'includes/header.php';
                             <?php endif; ?>
 
                             <p class="card-text flex-grow-1">
-                                <?= htmlspecialchars($message['description'], ENT_QUOTES, 'UTF-8'); ?>
+                                <?= htmlspecialchars(substr($message['description'], 0, 100), ENT_QUOTES, 'UTF-8'); ?>
                             </p>
 
                             <a class="btn btn-primary mt-3 rainbow-box"
@@ -50,7 +50,7 @@ require_once ROOT_PATH . 'includes/header.php';
                         </div>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 
