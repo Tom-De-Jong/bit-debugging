@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../config.php';
+
 $pageTitle = 'Info | Nieuws App';
 $activePage = 'info';
 
